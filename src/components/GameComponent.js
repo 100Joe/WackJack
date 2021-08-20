@@ -180,7 +180,6 @@ function Game() {
                             startIcon={<ComputerTwoToneIcon />}
                         >
                             Dealer
-                            : {dealerTotal}
                         </Button>
                     </Grid>
                     <Grid item xs={5} md={5} align="center" justify="center">
@@ -213,7 +212,6 @@ function Game() {
                             startIcon={<PersonTwoToneIcon />}
                         >
                             Player
-                            : {playerTotal}
                         </Button>
                     </Grid>
                     <Grid item xs={5} md={5} align="center" justify="center">
