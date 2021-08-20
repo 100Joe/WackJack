@@ -72,7 +72,6 @@ function Game() {
     const classes = useStyles();
     const [scoreD, setScoreD] = useState(0);
     const [scoreP, setScoreP] = useState(0);
-    const [win, setWin] = useState(0)
 
 
     const history = useHistory();
