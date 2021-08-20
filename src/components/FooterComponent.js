@@ -13,7 +13,7 @@ import ContactSupportOutlinedIcon from '@material-ui/icons/ContactSupportOutline
 
 const useStyles = makeStyles((theme) => ({
     appbar: {
-       
+
     },
     root: {
         marginTop: 50,
@@ -43,35 +43,35 @@ function Footer() {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-        <AppBar position="static" color="primary" >
-            <Toolbar>
-                <Typography variant="h4" color='textSecondary' className={classes.title} align="center">
-                    <Button component={Link} to='/' className={classes.button}
-                        color='inherit'
-                        startIcon={<CardMembershipOutlinedIcon />}
-                    >
-                      
-                    </Button>
-                </Typography>
-                <Typography variant="h4" color='textSecondary' className={classes.title} align="center">
-                    <Button component={Link} to='/Game' className={classes.button}
-                        color='inherit'
-                        startIcon={<GroupAddOutlinedIcon/>}
-                    >
-                        
-                    </Button >
-                </Typography>
-                <Typography variant="h4" color='textSecondary' className={classes.title} align="center">
-                    <Button component={Link} to='/Contact' className={classes.button}
-                        color='inherit'
-                        startIcon={<ContactSupportOutlinedIcon/>}
-                    >
-                        
-                    </Button >
-                </Typography>
-            </Toolbar>
-        </AppBar>
-    </div>
+            <AppBar position="static" color="primary" >
+                <Toolbar>
+                    <Typography variant="h4" color='textSecondary' className={classes.title} align="center">
+                        <Button component={Link} to='/' className={classes.button}
+                            color='inherit'
+                            startIcon={<CardMembershipOutlinedIcon />}
+                        >
+
+                        </Button>
+                    </Typography>
+                    <Typography variant="h4" color='textSecondary' className={classes.title} align="center">
+                        <Button component={Link} to='/Game' className={classes.button}
+                            color='inherit'
+                            startIcon={<GroupAddOutlinedIcon />}
+                        >
+
+                        </Button >
+                    </Typography>
+                    <Typography variant="h4" color='textSecondary' className={classes.title} align="center">
+                        <Button component={Link} to='/Contact' className={classes.button}
+                            color='inherit'
+                            startIcon={<ContactSupportOutlinedIcon />}
+                        >
+
+                        </Button >
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+        </div>
     )
 }
 

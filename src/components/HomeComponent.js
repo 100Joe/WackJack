@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 
 import Tabs from '@material-ui/core/Tabs';
@@ -131,7 +130,7 @@ function Home() {
     //a function to take u to the game page
     const handleClick = () => {
         history.push('/game');
-        window.scrollTo({top: 0, behavior: 'smooth'})
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }
     // const handleScroll = ()=> {
     // }
@@ -161,18 +160,22 @@ function Home() {
             </Grid>
             <Grid container spacing={2} align="center" justify="center">
                 <Grid item xs={12} md={6}>
-                    <Fade right>
-                        <CardMedia
+                    <Fade top>
+                        <img
                             className={classes.media}
-                            image='images/cardValues.png'
+                            src='images/cardValues.png'
+                            height="260px"
+                            alt=""
                         />
                     </Fade>
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <Fade right>
-                        <CardMedia
+                        <img
                             className={classes.media}
-                            image='images/cardWinner.jpg'
+                            src='images/cardWinner.jpg'
+                            height="260px"
+                            alt=""
                         />
                     </Fade>
                 </Grid>
@@ -186,8 +189,8 @@ function Home() {
                 </Grid>
             </Grid>
 
-                <Roll bottom>
-            <Grid container spacing={2} align="center" className={classes.container}>
+            <Roll bottom>
+                <Grid container spacing={2} align="center" className={classes.container}>
                     <Grid item xs={12} md={6} className={classes.item}>
                         <Tabs
                             orientation="vertical"
@@ -255,17 +258,17 @@ function Home() {
                             HERES THE CATCH NONE OF THESE RULES APPLY TO THIS GAME 🤣🤣
                         </TabPanel>
                     </Grid>
-                
-                <Grid item xs={12} md={6}>
-                    <Button color='primary' variant='contained'
-                        className={classes.button}
-                        onClick={handleClick}
+
+                    <Grid item xs={12} md={6}>
+                        <Button color='primary' variant='contained'
+                            className={classes.button}
+                            onClick={handleClick}
                         //the function from above to go to the game page
-                    >
-                        Lets Play
-                    </Button>
+                        >
+                            Lets Play
+                        </Button>
+                    </Grid>
                 </Grid>
-            </Grid>
             </Roll>
         </Container>
     )

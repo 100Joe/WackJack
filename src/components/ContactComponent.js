@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
-import Button from '@material-ui/core/Button';
+
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
@@ -100,7 +100,7 @@ function Contact() {
                                 <Chip className={classes.chip}
                                     onClick={() => window.open('https://github.com/100Joe')} color="primary" label="Github" />
                                 <Chip className={classes.chip}
-                                    onClick={() => window.open('')} label="Portfolio" />
+                                    onClick={() => window.open('https://josephedmonds.netlify.app/')} label="Portfolio" />
                             </div>
                         </div>
                     </Container>
