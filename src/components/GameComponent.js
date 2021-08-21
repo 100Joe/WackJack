@@ -7,41 +7,38 @@ import './game.css';
 import ComputerTwoToneIcon from '@material-ui/icons/ComputerTwoTone';
 import PersonTwoToneIcon from '@material-ui/icons/PersonTwoTone';
 import PlayArrowTwoToneIcon from '@material-ui/icons/PlayArrowTwoTone';
+import swal from 'sweetalert';
+
+
 
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-
-import swal from 'sweetalert';
+import Typography from '@material-ui/core/Typography';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { green } from '@material-ui/core/colors';
-
-
-
 
 const useStyles = makeStyles((theme) => ({
     alert: {
-        backgroundColor: green,
+        backgroundColor: 'Teal',
+        fontWeight: 'bold'
     },
     root: {
-        backgroundColor: '#35654d'
+        backgroundColor: '#35654d',
+        height: '80vh'
     },
     container2: {
         marginTop: 10,
-    },
-    text: {
-
     },
     dealer: {
         color: 'red'
     },
     media: {
-        height: 325,
-        width: 250,
-        margin: 'auto',
+        height: '160px',
         borderRadius: '10px',
-        border: '0.5px solid grey'
+        border: '0.5px solid grey',
+        transition: "transform 0.15s ease-in-out",
+        "&:hover": { transform: "scale3d(1.05, 1.05, 1)" },
 
     },
     button: {
@@ -65,144 +62,98 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
-
 function Game() {
-
     const classes = useStyles();
     const [scoreD, setScoreD] = useState(0);
     const [scoreP, setScoreP] = useState(0);
-
-
     const history = useHistory();
 
     const handleClick = () => {
-        playerTotal > dealerTotal ?
-            setScoreP(scoreP + 1) :
-            setScoreD(scoreD + 1)
-
-        if (scoreD === 1) {
-            //alert("Game Over dealer wins!")
-            swal({
-                text: "Dealer wins, Try your luck again?",
-                button: {
-                    text: "Play again!",
-                    closeModal: true,
-                },
-                icon: "error",
-                dangerMode: true
-            });
-            setScoreD(0)
-            setScoreP(0)
-        } else if (scoreP === 1) {
-            // alert('Game over Player wins!')
-            swal({
-                text: "You have won! Keep up the fun Winner!",
-                button: {
-                    text: `One more round! `,
-                    closeModal: true,
-                },
-                icon: "success"
-            });;
-            // swal(
-            //     <div className={classes.alert}>
-            //         <h1>You have Won!</h1>
-            //         <p>
-            //             Keep up the fun Winner!
-            //         </p>
-            //     </div>
-            // )
-            setScoreD(0)
-            setScoreP(0)
+        if (playerTotal > dealerTotal) {
+            setScoreP(prevScoreP => prevScoreP + 1);
+        } else if (playerTotal < dealerTotal) {
+            setScoreD(prevScoreD => prevScoreD + 1);
+        } else if (playerTotal === dealerTotal) {
+            setScoreP(scoreP + 0);
+            setScoreD(scoreD + 0)
         }
-
+        if (scoreD === 1) {
+            swal({
+                title: "Try again?",
+                text: "YOU LOSE !",
+                icon: "error",
+                dangerMode: true,
+            });
+            setScoreD(0);
+            setScoreP(0);
+        }
+        else if (scoreP === 1) {
+            swal({
+                title: "HOT-STREAK",
+                text: "CONGRATS YOURE A WINNER !",
+                icon: "success",
+                dangerMode: false,
+            });
+            setScoreD(0);
+            setScoreP(0);
+        }
         history.push('/game');
     }
-
-
-
 
     const originalDeck = deck.cards.map(item => ({ a: item.value, b: item.image }))
 
     let playerCard = originalDeck[Math.floor(Math.random() * originalDeck.length)];
-
     let playerCard2 = originalDeck[Math.floor(Math.random() * originalDeck.length)];
 
     let dealerCard = originalDeck[Math.floor(Math.random() * originalDeck.length)];
+    console.log(dealerCard.a);
 
     let dealerCard2 = originalDeck[Math.floor(Math.random() * originalDeck.length)];
+    console.log(dealerCard2.a);
 
-
-    // 
     let playerTotal = parseInt(playerCard.a) + parseInt(playerCard2.a)
-
+    console.log(`player score: ${playerTotal}`);
     let dealerTotal = parseInt(dealerCard.a) + parseInt(dealerCard2.a)
-
+    console.log(`dealer score: ${dealerTotal}`);
 
     return (
         <Container className={classes.root}>
-            <Container maxWidth='md'>
+            <Container maxWidth='md' >
                 <Grid container spacing={1} align='center' justify='center' className={classes.container2}>
-                    {/* <Grid item xs={10} md={10} align="center" justify="center" visibility="hidden" display="none">
-                        {
-                            playerTotal > dealerTotal ? (
-                                <Typography variant="h4" color='secondary' gutterBottom>
-                                    Player score is {playerTotal} PLAYER Wins ! 🏆
-                                </Typography>
-                            ) :
-                                dealerTotal > playerTotal ? (
-                                    <Typography variant="h4" className={classes.dealer} gutterBottom>Dealer score is {dealerTotal} DEALER Wins ! 😢</Typography>
-                                ) :
-                                    <Typography variant="h4" gutterBottom>DRAW 🤞 Player score: {playerTotal}, Dealer score: {dealerTotal}</Typography>
-                        }
-                    </Grid> */}
                     <Grid item xs={2} md={2} align="center" justify="center">
                         <Button
                             onClick={handleClick}
                             variant="outlined"
                             color="inherit"
-                            size="medium"
+                            size="small"
                             className={classes.buttonPlay}
                             startIcon={<PlayArrowTwoToneIcon />}
                         >
-                            Play Again
+                            Again
                         </Button>
                     </Grid>
                 </Grid>
                 <Grid container spacing={1}>
-                    <Grid item xs={2} md={2} align="center" justify="center">
+                    <Grid item xs={4} md={2} align="center" justify="center">
                         <Button
-
                             size="small"
                             className={classes.button}
                             color='secondary'
                             variant="contained"
                             startIcon={<ComputerTwoToneIcon />}
                         >
-                            Dealer
+                            Dealer: {scoreD}
                         </Button>
                     </Grid>
-                    <Grid item xs={5} md={5} align="center" justify="center">
-                        <img
-                            className={classes.media}
-                            src={dealerCard.b}
-                            title={dealerCard.a}
-                            height="260px"
-                            alt=""
-                        />
+                    <Grid item xs={4} md={5} align="center" justify="center">
+                        <img src={dealerCard.b} height='210px' title={dealerCard.a} alt='' />
                     </Grid>
-                    <Grid item xs={5} md={5} align="center" justify="center">
-                        <img
-                            className={classes.media}
-                            src={dealerCard2.b}
-                            title={dealerCard2.a}
-                            height="260px"
-                            alt=""
-                        />
+                    <Grid item xs={4} md={5} align="center" justify="center">
+                        <img src={dealerCard2.b} height='210px' title={dealerCard2.a} alt='' />
                     </Grid>
                 </Grid>
                 <Grid container spacing={1} className={classes.container2}>
-                    <Grid item xs={2} md={2} align="center" justify="center">
+                    <Grid item xs={4} md={2} align="center" justify="center">
                         <Button
 
                             size="small"
@@ -211,31 +162,19 @@ function Game() {
                             variant="contained"
                             startIcon={<PersonTwoToneIcon />}
                         >
-                            Player
+                            Player: {scoreP}
                         </Button>
                     </Grid>
-                    <Grid item xs={5} md={5} align="center" justify="center">
-                        <img
-                            className={classes.media}
-                            src={playerCard.b}
-                            title={playerCard.a}
-                            height="260px"
-                            alt=""
-                        />
+                    <Grid item xs={4} md={5} align="center" justify="center">
+                        <img src={playerCard.b} height='210px' title={playerCard.a} alt='' />
                     </Grid>
-                    <Grid item xs={5} md={5} align="center" justify="center">
-                        <img
-                            className={classes.media}
-                            src={playerCard2.b}
-                            title={playerCard2.a}
-                            height="260px"
-                            alt=""
-                        />
+                    <Grid item xs={4} md={5} align="center" justify="center">
+                        <img src={playerCard2.b} height='210px' title={playerCard2.a} alt='' />
                     </Grid>
                 </Grid>
             </Container>
         </Container>
-    )
+    );
 }
 
-export default Game;
+export default Game

@@ -19,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
         marginTop: 50,
         flexGrow: 1,
         display: 'flex',
+        marginBottom: 0,
+        paddingBottom: 0
     },
     title: {
         flexGrow: 1,
@@ -39,40 +41,40 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
+
 function Footer() {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <AppBar position="static" color="primary" >
+            <AppBar position='static' color="primary" className={classes.appbar} >
                 <Toolbar>
                     <Typography variant="h4" color='textSecondary' className={classes.title} align="center">
                         <Button component={Link} to='/' className={classes.button}
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                             color='inherit'
                             startIcon={<CardMembershipOutlinedIcon />}
                         >
-
                         </Button>
                     </Typography>
                     <Typography variant="h4" color='textSecondary' className={classes.title} align="center">
                         <Button component={Link} to='/Game' className={classes.button}
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                             color='inherit'
                             startIcon={<GroupAddOutlinedIcon />}
                         >
-
                         </Button >
                     </Typography>
                     <Typography variant="h4" color='textSecondary' className={classes.title} align="center">
                         <Button component={Link} to='/Contact' className={classes.button}
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                             color='inherit'
                             startIcon={<ContactSupportOutlinedIcon />}
                         >
-
                         </Button >
                     </Typography>
                 </Toolbar>
             </AppBar>
         </div>
-    )
+    );
 }
-
-export default Footer
+export default Footer;

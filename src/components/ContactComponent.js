@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
-
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
@@ -9,10 +8,14 @@ import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import CardContent from '@material-ui/core/CardContent';
 
-import Roll from 'react-reveal/Roll'
+import Roll from 'react-reveal/Roll';
+import Fade from 'react-reveal/Fade';
 import TextLoop from "react-text-loop";
 
 const useStyles = makeStyles((theme) => ({
+    container: {
+        minHeight: '85vh'
+    },
     root: {
         width: '100%',
         maxWidth: 360,
@@ -21,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": { transform: "scale3d(1.05, 1.05, 1)" },
     },
     chip: {
-        margin: theme.spacing(0.5),
+        margin: theme.spacing(1),
         border: '1px solid black',
         "&:hover": { transform: "scale3d(1.02, 1.02, 1)" },
         cursor: 'pointer',
@@ -53,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 function Contact() {
     const classes = useStyles();
     return (
-        <Container>
+        <Container className={classes.container}>
             <Grid container spacing={1}>
                 <Grid item xs={12} md={12}>
                     <Roll right>
@@ -75,71 +78,75 @@ function Contact() {
             </Grid>
             <Grid container spacing={1}>
                 <Grid item xs={12} md={6}>
-                    <Container className={classes.root}>
-                        <div className={classes.section1}>
-                            <Grid container alignItems="center">
-                                <Grid item xs>
-                                    <Typography gutterBottom variant="h4">
-                                        Joseph Edmonds
-                                    </Typography>
+                    <Fade left>
+                        <Container className={classes.root}>
+                            <div className={classes.section1}>
+                                <Grid container alignItems="center">
+                                    <Grid item xs>
+                                        <Typography gutterBottom variant="h4">
+                                            Joseph Edmonds
+                                        </Typography>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                            <Typography color="textSecondary" variant="body2">
-                                Learn, apply, and dominate. Software developer on the rise.
-                            </Typography>
-                        </div>
-                        <Divider variant="middle" />
-                        <div className={classes.section2}>
-                            <Typography gutterBottom variant="body1">
-                                View social network
-                            </Typography>
-                            <div>
-                                <Chip className={classes.chip}
-                                    onClick={() => window.open('https://www.linkedin.com/in/joseph-edmonds-4b60a514a/')}
-                                    label="LinkedIn" />
-                                <Chip className={classes.chip}
-                                    onClick={() => window.open('https://github.com/100Joe')} color="primary" label="Github" />
-                                <Chip className={classes.chip}
-                                    onClick={() => window.open('https://josephedmonds.netlify.app/')} label="Portfolio" />
+                                <Typography color="textSecondary" variant="body2">
+                                    Learn, apply, and dominate. Software developer on the rise..
+                                </Typography>
                             </div>
-                        </div>
-                    </Container>
+                            <Divider variant="middle" />
+                            <div className={classes.section2}>
+                                <Typography gutterBottom variant="body1">
+                                    View social network
+                                </Typography>
+                                <div>
+                                    <Chip className={classes.chip}
+                                        onClick={() => window.open('https://www.linkedin.com/in/joseph-edmonds-4b60a514a/')}
+                                        label="LinkedIn" />
+                                    <Chip className={classes.chip}
+                                        onClick={() => window.open('http://github.com/100Joe')} color="primary" label="Github" />
+                                    <Chip className={classes.chip}
+                                        onClick={() => window.open('http://josephedmonds.netlify.app/')} label="Portfolio" />
+                                </div>
+                            </div>
+                        </Container>
+                    </Fade>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <Container className={classes.root}>
-                        <div className={classes.section1}>
-                            <Grid container alignItems="center">
-                                <Grid item xs>
-                                    <Typography gutterBottom variant="h4">
-                                        Joseph Tharpe
-                                    </Typography>
+                    <Fade right>
+                        <Container className={classes.root}>
+                            <div className={classes.section1}>
+                                <Grid container alignItems="center">
+                                    <Grid item xs>
+                                        <Typography gutterBottom variant="h4">
+                                            Joseph Tharpe
+                                        </Typography>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                            <Typography color="textSecondary" variant="body2">
-                                proven track record of fast learning and giving my 100% to get the job done.
-                            </Typography>
-                        </div>
-                        <Divider variant="middle" />
-                        <div className={classes.section2}>
-                            <Typography gutterBottom variant="body1">
-                                View social network
-                            </Typography>
-                            <div>
-                                <Chip className={classes.chip}
-                                    onClick={() => window.open('https://www.linkedin.com/in/joseph-tharpe')}
-                                    label="LinkedIn" />
-                                <Chip className={classes.chip}
-                                    onClick={() => window.open('http://github.com/joeytharpe1')} color="primary" label="Github" />
-                                <Chip className={classes.chip}
-                                    onClick={() => window.open('http://jtharpe.netlify.app/')} label="Portfolio" />
+                                <Typography color="textSecondary" variant="body2">
+                                    proven track record of fast learning and giving my 100% to get the job done.
+
+                                </Typography>
                             </div>
-                        </div>
-                    </Container>
+                            <Divider variant="middle" />
+                            <div className={classes.section2}>
+                                <Typography gutterBottom variant="body1">
+                                    View social network
+                                </Typography>
+                                <div>
+                                    <Chip className={classes.chip}
+                                        onClick={() => window.open('https://www.linkedin.com/in/joseph-tharpe')}
+                                        label="LinkedIn" />
+                                    <Chip className={classes.chip}
+                                        onClick={() => window.open('http://github.com/joeytharpe1')} color="primary" label="Github" />
+                                    <Chip className={classes.chip}
+                                        onClick={() => window.open('http://jtharpe.netlify.app/')} label="Portfolio" />
+                                </div>
+                            </div>
+                        </Container>
+                    </Fade>
                 </Grid>
             </Grid>
         </Container>
-
-    )
+    );
 }
 
 export default Contact
